@@ -1,27 +1,18 @@
 version: '3.7'
 services:
-  db:
-    image: mysql:8.0.19
-    restart: always
-    volumes:
-      - db_data:/var/lib/mysql
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=wordpress
-      - MYSQL_DATABASE=wordpress
-      - MYSQL_USER=wordpress
-      - MYSQL_PASSWORD=wordpress
   wordpress:
-    depends_on:
-      - db
     image: wordpress:latest
+    volumes:
+      - ../../../efs:/var/www/html
     ports:
       - 80:80
     restart: always
     environment:
-      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_HOST=wordpress.cmy4dyh31mfn.eu-west-3.rds.amazonaws.com
       - WORDPRESS_DB_USER=wordpress
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DB_HOME=newest-1-1771759872.eu-west-3.elb.amazonaws.com
+      - WORDPRESS_CONFIG_EXTRA=define('WP_HOME','newest-1-1771759872.eu-west-3.elb.amazonaws.com');
 volumes:
-  db_data:  
+  db_data:

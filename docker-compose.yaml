@@ -12,7 +12,7 @@ services:
       - WORDPRESS_DB_USER=wordpress
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_NAME=wordpress
-      - WORDPRESS_DB_HOME=newest-1-1771759872.eu-west-3.elb.amazonaws.com
-      - WORDPRESS_CONFIG_EXTRA=define('WP_HOME','newest-1-1771759872.eu-west-3.elb.amazonaws.com');
+      - WORDPRESS_DB_HOME=${LB_DNS}
+      - WORDPRESS_CONFIG_EXTRA=define('WP_HOME','${LB_DNS}');
 volumes:
   db_data:

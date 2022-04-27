@@ -8,11 +8,10 @@ services:
       - 80:80
     restart: always
     environment:
-      - WORDPRESS_DB_HOST=wordpress.cmy4dyh31mfn.eu-west-3.rds.amazonaws.com
+      - WORDPRESS_DB_HOST='${RDS_HOST}'
       - WORDPRESS_DB_USER=wordpress
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_NAME=wordpress
-      - WORDPRESS_DB_HOME=${LB_DNS}
       - WORDPRESS_CONFIG_EXTRA=define('WP_HOME','${LB_DNS}');
 volumes:
   db_data:

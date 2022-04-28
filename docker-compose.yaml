@@ -10,7 +10,7 @@ services:
     environment:
       - WORDPRESS_DB_HOST=${RDS_HOST}
       - WORDPRESS_DB_USER=wordpress
-      - WORDPRESS_DB_PASSWORD=password
+      - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_NAME=wordpress
       - WORDPRESS_CONFIG_EXTRA=define('WP_HOME','${LB_DNS}');
 volumes:
